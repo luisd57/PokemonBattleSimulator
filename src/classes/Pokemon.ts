@@ -14,10 +14,12 @@ export class Pokemon implements Fightable {
     }
 
     basicAttack(target: Pokemon): string {
-        const damage = Math.max(0, this.combatStats.attack - target.combatStats.defense + Math.floor(Math.random() * 5));
+        const damage = Math.max(0, this.combatStats.attack - target.combatStats.defense) + Math.floor(Math.random() * 20) + 10;
+
         target.lifePoints -= damage;
 
         if (target.lifePoints <= 0) {
+            target.lifePoints = 0;
             return `${target.name} is defeated!`;
         }
 
